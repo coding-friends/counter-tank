@@ -1,0 +1,10 @@
+{
+  "name": "james",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/coding-friends/counter-tank",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.3.0"
+  }
+}
