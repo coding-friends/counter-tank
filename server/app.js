@@ -3,6 +3,7 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const path = require("path");
+const Config = require("../Config.js")
 
 const ROOT_DIR = path.dirname(__dirname);
 const CLIENT_DIR = path.join(ROOT_DIR, "client");
@@ -13,6 +14,9 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
+  socket.on(Config.KEYS,()=>{
+
+  })
 });
 
 app.use(express.static(CLIENT_DIR));
