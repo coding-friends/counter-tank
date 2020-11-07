@@ -1,28 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Counter Tank</title>
+    <title>Suckers!</title>
     <link rel="stylesheet" href="index.css">
-  </head>
-
-  <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"
 	    integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ=="
 	    crossorigin="anonymous"></script>
-    <div class="container">
-      <div>
+  </head>
 
-	<h1 class="title">Welcome to Counter Tank</h1>
-	<button class="create-button">Create room</button>
-	<br/>
-	<small class="join-help">To join a room, simply copy paste a link your friend sent to you</small>
-      </div>
-    </div>
-    <script src="../Config.js"></script>
-    <script src="index.js"></script>
+  <body>
+    <h1>Room Id :</h1>
+     <span id='room-id'></span>
+    <h2>Participants</h2>
+    <ul id="participants-container">
+      
+    </ul>
+    <button id="play-button">Play</button>
+    <script src="/Config.js"></script>
+    <script src="room.js"></script>
+    <script>
+    </script>
   </body>
 
 </html>
