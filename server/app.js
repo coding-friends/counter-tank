@@ -3,7 +3,7 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
 const path = require("path");
-const Config = require("../Config.js")
+const CONFIG = require("../Config.js");
 
 const ROOT_DIR = path.dirname(__dirname);
 const CLIENT_DIR = path.join(ROOT_DIR, "client");
@@ -14,12 +14,13 @@ io.on("connection", (socket) => {
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
-  socket.on(Config.KEYS,()=>{
-
+  socket.on(CONFIG.SOCKET.SEND_KEYS,(value)=>{
+    console.log("thank you")
+    socket.send(CONFIG.SOCKET.RECEIVE,value)
   })
 });
 
-app.use(express.static(CLIENT_DIR));
+app.use(express.static(ROOT_DIR));
 http.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log(`Server url : http://localhost:${PORT}`);

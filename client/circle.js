@@ -13,7 +13,7 @@ class Circle {
         if (cross < 0) {
             let crossRatio = cross / d
             let tMass = this.mass + circle.mass
-            let acc = dVec.copy.mul(crossRatio * this.mass / (tMass))
+            let acc = dVec.mul(crossRatio * this.mass / (tMass))
             // might need to flip these. 
             this.velocity.add(acc)
             circle.velocity.sub(acc)
@@ -21,4 +21,4 @@ class Circle {
     }
 }
 
-module.exports = Circle
+// module.exports = Circle

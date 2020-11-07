@@ -7,7 +7,7 @@ class Tank {
     }
     display(){
         fill(200,130,130)
-        ellipse(x,y,r*2,r*2)
+        ellipse(this.position.x,this.position.y,this.radius*2,this.radius*2)
     }
 
     handleKeys(e){
