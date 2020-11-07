@@ -15,8 +15,9 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
   });
   socket.on(CONFIG.SOCKET.SEND_KEYS,(value)=>{
-    console.log("thank you")
-    socket.send(CONFIG.SOCKET.RECEIVE,value)
+    console.log("thank you",value)
+    console.log(CONFIG.SOCKET.RECEIVE)
+    socket.emit(CONFIG.SOCKET.RECEIVE,value)
   })
 });
 
