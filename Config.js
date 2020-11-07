@@ -2,6 +2,8 @@ const CONFIG = {
     SOCKET : {
         SEND_KEYS : "s",
         RECEIVE : "r",
+	JOIN_ROOM : "j",
+	CREATE_ROOM : "c",
     },
     INPUT_SCHEMA: {
         x: -8, // -1 for left, 0 for nothing, 1 for right
