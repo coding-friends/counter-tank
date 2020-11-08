@@ -29,6 +29,14 @@ const CONFIG = {
     },
     MAP_SCHEMA: {
         walls: [[0.32]], // polygon
+    },
+    GAME : {
+        MAP_W : 1e5,
+        MAP_H : 1e5,
+        BULLET_R: 10,
+        PLAYER_R : 30,
+        PLAYER_M : 100,
+        FPS : 50,
     }
 }
 

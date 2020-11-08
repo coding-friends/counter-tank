@@ -18,4 +18,5 @@ function createRoom(){
 document.body.onload = ()=>{
   const button = document.querySelector("button.create-button")
   button.addEventListener("click", createRoom)
+  startGame()
 }

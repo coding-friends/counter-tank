@@ -1,7 +1,7 @@
+
 const name = prompt("Enter your name");
 const roomId = new URLSearchParams(window.location.search).get("id");
 document.querySelector("#room-id").innerHTML = roomId;
-const socket = io();
 
 
 function setParticipants(participants){
@@ -11,15 +11,16 @@ function setParticipants(participants){
   participantsContainer.innerHTML = innerHTML
 }
 
-socket.on("connect", () => {
-  socket.emit(CONFIG.SOCKET.JOIN_ROOM,roomId,name)
-  socket.on(CONFIG.SOCKET.JOIN_ROOM,(participants)=>{
-    setParticipants(participants)
-  })
-});
+
+
+socket.emit(CONFIG.SOCKET.JOIN_ROOM,roomId,name)
+socket.on(CONFIG.SOCKET.JOIN_ROOM,(participants)=>{
+  console.log("receive joined room")
+  setParticipants(participants)
+})
 
 socket.on(CONFIG.SOCKET.GAME_STARTED,()=>{
-  window.location.href = `/client/play.html?id=${roomId}`
+  startGame()
 })
 
 document.querySelector("#play-button").addEventListener("click",()=>{
