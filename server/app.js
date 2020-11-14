@@ -30,7 +30,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on(CONFIG.SOCKET.CREATE_ROOM, () => {
-    console.log("received room creation request")
+    // console.log("received room creation request")
     const roomId = uuidv4()
 
     rooms[roomId] = {}
@@ -55,6 +55,7 @@ io.on("connection", (socket) => {
     io.to(roomId).emit(CONFIG.SOCKET.GAME_STARTED, "")
     const players = Object.entries(rooms[roomId]).map(([socketId,username])=> new Player(io.sockets.connected[socketId],username))
     const game = new Game(roomId, io, players)
+
     game.start()
     games[roomId] = game
   })

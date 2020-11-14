@@ -11,7 +11,7 @@ class Tank {
     }
 
     handleKeys(e){
-        console.log(e.key)
+        // console.log(e.key)
     }
     
 

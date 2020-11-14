@@ -9,7 +9,7 @@ const socket = io()
 socket.on(CONFIG.SOCKET.RECEIVE, () => {
 
 })
-console.log("connected")
+// console.log("connected")
 let tank;
 function setup() {
     createCanvas(window.innerWidth, window.innerHeight)
@@ -19,7 +19,7 @@ function setup() {
 const KEYS = {}
 function keyPressed(e) {
     KEYS[e.key] = true
-    console.log(KEYS)
+    // console.log(KEYS)
     sendKeys()
 }
 function keyReleased(e) {
@@ -37,13 +37,13 @@ function getSchema() {
 // function sendKeys(){
 //   // const schema = JSON.stringify(getSchema())
 //   const schema = input01.encode(getSchema())
-//   console.log(schema)
+//   // console.log(schema)
 //   let now = Date.now()
 //   for (let i =0 ; i < 10000; i++){
 //     socket.emit(CONFIG.SOCKET.SEND_KEYS,new ArrayBuffer(10))
 //   }
 //   let end = Date.now()
-//   console.log("time taken",end - now)
+//   // console.log("time taken",end - now)
 // }
 //puis?
 function binaryStringToArrayBuffer(data) {
@@ -71,13 +71,13 @@ function binaryStringToArrayBuffer(data) {
 let times = 1e4
 
 function benchmarkSend(data) {
-    console.log("benchmarking", data)
+    // console.log("benchmarking", data)
     let now = Date.now()
     for (let i = 0; i < times; i++) {
         socket.emit(CONFIG.SOCKET.SEND_KEYS, data)
     }
     let end = Date.now()
-    console.log("time taken", end - now)
+    // console.log("time taken", end - now)
 }
 function benchmarkBuffer() {
     let schema = binaryStringToArrayBuffer("101")

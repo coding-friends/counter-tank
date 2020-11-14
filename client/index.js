@@ -9,7 +9,7 @@ function createRoom(){
   socket.on("connect",()=>{
     socket.emit(CONFIG.SOCKET.CREATE_ROOM,"")
     socket.on(CONFIG.SOCKET.CREATE_ROOM,(id) => {
-      console.log("received id",id)
+      // console.log("received id",id)
       showRoom(id)
     })
   })

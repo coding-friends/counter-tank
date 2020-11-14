@@ -12,18 +12,23 @@ tbt_Vec.prototype.sub = function (vec) {
     this.y -= vec.y;
     return this;
 };
-tbt_Vec.prototype.mul = function (vec) {
-    this.x *= vec.x || vec;
-    this.y *= vec.y || vec;
+tbt_Vec.prototype.dot = function (vec) {
+    this.x *= vec.x;
+    this.y *= vec.y;
     return this;
 };
-tbt_Vec.prototype.div = function (vec) {
-    this.x /= vec.x || vec;
-    this.y /= vec.y || vec;
-    return this;
+
+tbt_Vec.prototype.muln = function(n){
+    this.x *= n
+    this.y *= n
+    return this
+}
+tbt_Vec.prototype.div = function (n) {
+    this.muln(1/n)
+    return this
 };
 tbt_Vec.prototype.translate = tbt_Vec.prototype.add;
-tbt_Vec.prototype.scale = tbt_Vec.prototype.mul;
+tbt_Vec.prototype.scale = tbt_Vec.prototype.muln;
 tbt_Vec.prototype.rotate = function (angle) {
     this.dir += angle;
     return this;
@@ -32,6 +37,10 @@ tbt_Vec.prototype.setDir = function (dir) {
     this.dir = dir;
     return this;
 };
+tbt_Vec.prototype.limit = function (max) {
+     if (this.mag > max) this.mag = max
+     return this
+}
 Object.defineProperty(tbt_Vec.prototype, "mag", {
     get: function () {
         return (this.x ** 2 + this.y ** 2) ** 0.5;
@@ -82,16 +91,16 @@ tbt_VecGroup.prototype.sub = function (vec) {
     for (var v of this) v.sub(vec);
     return this;
 };
-tbt_VecGroup.prototype.mul = function (vec) {
-    for (var v of this) v.mul(vec);
+tbt_VecGroup.prototype.muln = function (n) {
+    for (var v of this) v.muln(n);
     return this;
 };
-tbt_VecGroup.prototype.div = function (vec) {
-    for (var v of this) v.div(vec);
+tbt_VecGroup.prototype.div = function (n) {
+    for (var v of this) v.div(n);
     return this;
 };
 tbt_VecGroup.prototype.translate = tbt_VecGroup.prototype.add;
-tbt_VecGroup.prototype.scale = tbt_VecGroup.prototype.mul;
+tbt_VecGroup.prototype.scale = tbt_VecGroup.prototype.muln;
 tbt_VecGroup.prototype.rotate = function (angle) {
     for (var v of this) v.dir += angle;
     return this;

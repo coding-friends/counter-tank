@@ -19,7 +19,7 @@ function intervalStyle() {
 
   if (diff < intervalDelay) {
     //throw new Error('Timer fired early.');
-    console.log('Timer fired early - Expected:', timeoutDelay, 'Actual:', diff);
+    // console.log('Timer fired early - Expected:', timeoutDelay, 'Actual:', diff);
   }
 
   reps++;
@@ -40,7 +40,7 @@ function intervalStyle() {
   intervalFinalStats[intervalDelay] = { fin: output, times: times };
   
   if (reps % 100 === 0) {
-    console.log(output);
+    // console.log(output);
   }
 
   previousTimeStamp = timeStamp;
@@ -53,7 +53,7 @@ function timeoutStyle() {
 
   if (diff < timeoutDelay) {
     //throw new Error('Timer fired early.');
-    console.log('Timer fired early - Expected:', timeoutDelay, 'Actual:', diff);
+    // console.log('Timer fired early - Expected:', timeoutDelay, 'Actual:', diff);
   }
 
   reps += 1;
@@ -75,7 +75,7 @@ function timeoutStyle() {
   timeoutFinalStats[timeoutDelay] = { fin: output, times: times };
 
   if (reps % 100 === 0) {
-    console.log(output);
+    // console.log(output);
   }
 
   previousTimeStamp = timeStamp;
@@ -101,9 +101,9 @@ function theBenchmark() {
     timeoutStyle();
     setTimeout(function() {
       clearTimeout(theTimeout);
-      console.log('\r\n\r\n');
-      console.log(JSON.stringify(intervalFinalStats, null, '\t'));
-      console.log(JSON.stringify(timeoutFinalStats, null, '\t'));
+      // console.log('\r\n\r\n');
+      // console.log(JSON.stringify(intervalFinalStats, null, '\t'));
+      // console.log(JSON.stringify(timeoutFinalStats, null, '\t'));
       if (intervalDelay <= theLimit) {
         theBenchmarkTimeout = setTimeout(theBenchmark, 500);
       }

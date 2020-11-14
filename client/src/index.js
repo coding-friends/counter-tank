@@ -3,7 +3,7 @@ let schema;
 const socket = io();
 let start = Date.now();
 const KEYS = {};
-console.log("connected");
+// console.log("connected");
 let tank;
 
 // function setup for creating canvas and initializing players
@@ -15,7 +15,7 @@ function setup() {
 //handling key pressed and sending them
 function keyPressed(e) {
   KEYS[e.key] = true;
-  console.log(KEYS);
+  // console.log(KEYS);
   sendKeys();
 }
 
@@ -38,7 +38,7 @@ function getSchema() {
 
 //sending keys to socket io with emit
 function sendKeys() {
-  console.log("sending");
+  // console.log("sending");
   start = Date.now();
   socket.emit(CONFIG.SOCKET.SEND_KEYS, getSchema());
 }
@@ -52,6 +52,6 @@ function draw() {
 //handling received message from socket
 socket.on(CONFIG.SOCKET.RECEIVE, (data) => {
   let lapse = Date.now() - start;
-  console.log("time taken", lapse);
-  console.log("received", data);
+  // console.log("time taken", lapse);
+  // console.log("received", data);
 });

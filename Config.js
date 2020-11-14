@@ -33,10 +33,19 @@ const CONFIG = {
     GAME : {
         MAP_W : 1e5,
         MAP_H : 1e5,
-        BULLET_R: 10,
+        BULLET_R: 50,
         PLAYER_R : 30,
         PLAYER_M : 100,
         FPS : 50,
+        MAX_VELOCITY : 1,
+        MAX_ACCELERATION : 0.022,
+        FRICTION_COEFF : 0.97,
+        BULLET_FRICTION_COEFF: 0.997,
+        BULLET_SPEED_THRESHOLD : 1e-1,
+        BULLET_SPEED: 1,
+        INIT_SHOOTING_SPEED: 100,
+        DAMAGE_SCORE: 100,
+        PRECISION : 10,
     }
 }
 

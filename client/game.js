@@ -15,8 +15,8 @@ function startGame() {
 
 socket.on(CONFIG.SOCKET.RECEIVE, (newGame) => {
   // let lapse = Date.now() - start;
-  // console.log("time taken", lapse);
-  // console.log("received", newGame);
+  // // console.log("time taken", lapse);
+  // // console.log("received", newGame);
   game = newGame
   start = Date.now()
 });
@@ -30,19 +30,28 @@ function display(game) {
 
   for (let player of players) {
     fill(player.color.r, player.color.g, player.color.b)
-    ellipse(player.x, player.y, 2 * CONFIG.GAME.PLAYER_R, 2 * CONFIG.GAME.PLAYER_R)
-    textAlign("CENTER")
+    push()
+    translate(player.x,player.y)
+
+    ellipse(0, 0, 2 * CONFIG.GAME.PLAYER_R, 2 * CONFIG.GAME.PLAYER_R)
+    rotate(player.r)
+    fill(200)
+    rect(CONFIG.GAME.PLAYER_R,-5,30,10)
+    
+    pop()
+    textAlign(CENTER)
     fill(0)
     text(player.name, player.x, player.y)
   }
 
   for (let bullet of bullets) {
-    ellipse(bullet.x, bullet.y, CONFIG.GAME.BULLET_R, CONFIG.GAME.BULLET_R)
+    fill(bullet.color.r,bullet.color.g,bullet.color.b)
+    ellipse(bullet.x, bullet.y,2* CONFIG.GAME.BULLET_R, 2*CONFIG.GAME.BULLET_R)
   }
 }
 function keyPressed(e) {
   KEYS[e.key] = true;
-  console.log(KEYS);
+  // console.log(KEYS);
   sendKeys();
 }
 
@@ -60,12 +69,13 @@ function getSchema() {
   const x = ((KEYS.a) ? -1 : 0) + ((KEYS.d) ? 1 : 0);
   const y = ((KEYS.w) ? -1 : 0) + ((KEYS.s) ? 1 : 0);
   const r = ((KEYS.ArrowLeft) ? -1 : 0) + ((KEYS.ArrowRight) ? 1 : 0);
-  return [x, y, r];
+  const shooting = KEYS[" "] ? 1 : 0
+  return [x, y, r,shooting];
 }
 
 //sending keys to socket io with emit
 function sendKeys() {
-  console.log("sending");
+  // console.log("sending");
   start = Date.now();
   socket.emit(CONFIG.SOCKET.SEND_KEYS, getSchema());
 }

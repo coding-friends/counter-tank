@@ -15,7 +15,7 @@ function setParticipants(participants){
 
 socket.emit(CONFIG.SOCKET.JOIN_ROOM,roomId,name)
 socket.on(CONFIG.SOCKET.JOIN_ROOM,(participants)=>{
-  console.log("receive joined room")
+  // console.log("receive joined room")
   setParticipants(participants)
 })
 
